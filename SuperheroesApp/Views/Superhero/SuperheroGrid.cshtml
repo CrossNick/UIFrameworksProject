@@ -1,0 +1,109 @@
+﻿
+@{
+    ViewBag.Title = "SuperheroGrid";
+}
+    <h2>SuperheroGrid</h2>
+    
+    <div class="modal fade" id="basic" tabindex="-1" role="basic" aria-hidden="true">
+        <div class="modal-dialog nmn-modal-md" id="basicModalDialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Modal Title</h4>
+                </div>
+                <div class="modal-body"> Modal body goes here </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn green">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table id="heroes-table" class="table">
+        <thead id="tablehead">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Nickname</th>
+                <th scope="col">DOB</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+    var data = [
+            {
+                Id: 1,
+                Name: 'Name 1',
+                Nickname: 'Nickname 1',
+                DOB: '01/01/2019'
+            },
+            {
+                Id: 2,
+                Name: 'Name 2',
+                Nickname: 'Nickname 2',
+                DOB: '01/02/2019'
+            },
+            {
+                Id: 3,
+                Name: 'Name 3',
+                Nickname: 'Nickname 3',
+                DOB: '01/03/2019'
+            },
+            {
+                Id: 4,
+                Name: 'Name 4',
+                Nickname: 'Nickname 4',
+                DOB: '01/04/2019'
+            },
+            {
+                Id: 5,
+                Name: 'Name 5',
+                Nickname: 'Nickname 5',
+                DOB: '01/05/2019'
+            },
+    ];
+
+    openLinkAsModal = function (param, pointer) {
+
+        console.log(param);
+
+        var linkUrl = $(pointer).data('url');
+        linkUrl += '?id=' + param;
+
+        $.get(linkUrl).then(function (response) { 
+
+            $('.modal-backdrop').remove();
+            var modalWindow = $("#basic");
+            modalWindow.find('#basicModalDialog').empty();
+            modalWindow.find('#basicModalDialog').append(response);
+            modalWindow.modal('show');
+        });
+    }
+
+    $("#heroes-table").DataTable({
+            data: data,
+            lengthMenu: [10, 25, 50, 75, 100],
+            columns: [
+                {
+                    name: "Name",
+                    data: "Name"
+                },
+                { name: "Nickname", data: "Nickname" },
+                { name: "DOB", data: "DOB" },
+                {
+                    name: "Actions",
+                    data: null,
+                    render: function (data, type, row) {
+                        var url = '@Url.Action("SuperheroInfoModal", "Superhero")';
+                        return "<button data-url=" + url + " class='btn btn-success' onclick='openLinkAsModal("+row.Id+", this)'>View</button>";
+                    }
+                }
+            ]
+    });
+    </script>
+        
+
