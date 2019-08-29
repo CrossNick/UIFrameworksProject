@@ -35,6 +35,12 @@ namespace SuperheroesApp
                     "~/Scripts/bootstrap-datetimepicker.js"
                   ));
 
+            bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
+                      "~/Scripts/knockout-3.5.0.js",
+                      "~/Scripts/knockout.mapping-latest.js",
+                      "~/Scripts/knockout.validation.js"
+             ));
+
             bundles.Add(new ScriptBundle("~/bundles/actions").Include(
                       //"~/Scripts/Actions.js",
                       // "~/Scripts/BookManagement.js",
