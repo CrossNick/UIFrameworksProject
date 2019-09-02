@@ -28,13 +28,33 @@ namespace SuperheroesApp.Controllers
         [HttpGet]
         public ActionResult SuperheroInfoModal(int id)
         {
-            var model = new SuperheroInfoVM() {
-                Name = "Name",
-                NickName = "SerName",
-                DOB = "22.08.1998"
-            };
+            var model = SuperheroInfoVM.model.Where(x => x.Id == id).First();
 
             return PartialView("_SuperheroInfoModal", model);
+        }
+
+        [HttpGet]
+        public JsonResult GetGridInfo()
+        {
+            var model = SuperheroInfoVM.model;
+
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult GetSuperpowers()
+        {
+            var model = SuperheroListVM.superpowers;
+
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult GetAchievements()
+        {
+            var model = SuperheroListVM.achievements;
+
+            return Json(model, JsonRequestBehavior.AllowGet);
         }
 
     }

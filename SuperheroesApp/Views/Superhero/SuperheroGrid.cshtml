@@ -34,6 +34,15 @@
     </table>
 
     <script>
+         var urls = {
+            getGridDataUrl: '@Url.Action("GetGridInfo","Superhero")',
+            getSuperheroModalUrl: '@Url.Action("SuperheroInfoModal","Superhero")',
+            getSuperpowersUrl: '@Url.Action("GetSuperpowers","Superhero")',
+            getAchievementsUrl: '@Url.Action("GetAchievements","Superhero")'
+        };
+
+        var controller = new SuperheroGridController(new SuperheroGridBusiness(new SuperheroService(urls)));
+
     var data = [
             {
                 Id: 1,
@@ -68,8 +77,6 @@
     ];
 
     openLinkAsModal = function (param, pointer) {
-
-        console.log(param);
 
         var linkUrl = $(pointer).data('url');
         linkUrl += '?id=' + param;

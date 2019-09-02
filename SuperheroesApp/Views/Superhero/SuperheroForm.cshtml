@@ -66,6 +66,15 @@
     </div>
 </form>
 <script>
+    var urls = {
+            getGridDataUrl: '@Url.Action("GetGridInfo","Superhero")',
+            getSuperheroModalUrl: '@Url.Action("SuperheroInfoModal","Superhero")',
+            getSuperpowersUrl: '@Url.Action("GetSuperpowers","Superhero")',
+            getAchievementsUrl: '@Url.Action("GetAchievements","Superhero")'
+        };
+
+    var controller = new SuperheroGridController(new SuperheroFormBusiness(new SuperheroService(urls)));
+
     $(document).ready(function(){
         $("#dob").datetimepicker({
             format: 'DD/MM/YYYY'
