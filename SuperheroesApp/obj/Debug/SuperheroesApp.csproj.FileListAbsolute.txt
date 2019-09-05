@@ -69,8 +69,8 @@ D:\TestProject\UIFrameworks\UIFrameworksProject\SuperheroesApp\bin\System.Web.We
 D:\TestProject\UIFrameworks\UIFrameworksProject\SuperheroesApp\bin\Newtonsoft.Json.xml
 D:\TestProject\UIFrameworks\UIFrameworksProject\SuperheroesApp\bin\Antlr3.Runtime.pdb
 D:\TestProject\UIFrameworks\UIFrameworksProject\SuperheroesApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\TestProject\UIFrameworks\UIFrameworksProject\SuperheroesApp\obj\Debug\SuperheroesApp.csprojAssemblyReference.cache
 D:\TestProject\UIFrameworks\UIFrameworksProject\SuperheroesApp\obj\Debug\SuperheroesApp.csproj.CoreCompileInputs.cache
 D:\TestProject\UIFrameworks\UIFrameworksProject\SuperheroesApp\obj\Debug\SuperheroesApp.csproj.CopyComplete
 D:\TestProject\UIFrameworks\UIFrameworksProject\SuperheroesApp\obj\Debug\SuperheroesApp.dll
 D:\TestProject\UIFrameworks\UIFrameworksProject\SuperheroesApp\obj\Debug\SuperheroesApp.pdb
+D:\TestProject\UIFrameworks\UIFrameworksProject\SuperheroesApp\obj\Debug\SuperheroesApp.csprojAssemblyReference.cache

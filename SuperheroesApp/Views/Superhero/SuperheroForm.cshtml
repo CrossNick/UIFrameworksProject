@@ -5,37 +5,42 @@
 
 <h2>SuperheroForm</h2>
 
-<form>
+<form id="main-form" data-bind="submit: Submit">
     <div class="form-group">
-        <label for="last-name">Last name:</label>
-        <input type="text" id="last-name" class="form-control" placeholder="Last Name" aria-label="last-name" maxlength="30" required />
+        <label for="name">Name:</label>
+        <input type="text" id="name" class="form-control" placeholder="Name" aria-label="name" required maxlength="30" data-bind="value: model.Name" />
+        <p data-bind="validationMessage: model.Name"></p>
 
-        <label for="first-name">First name:</label>
-        <input type="text" id="first-name" class="form-control" placeholder="First Name" aria-label="first-name" maxlength="30" required />
+        <label for="sername">Sername:</label>
+        <input type="text" id="sername" class="form-control" placeholder="Sername" aria-label="sername" maxlength="30" required data-bind="value: model.Sername" />
+        <p data-bind="validationMessage: model.Sername"></p>
 
         <label for="patronymic">Patronymic:</label>
-        <input type="text" id="patronymic" class="form-control" placeholder="Patronymic" aria-label="patronymic" maxlength="30" />
+        <input type="text" id="patronymic" class="form-control" placeholder="Patronymic" aria-label="patronymic" maxlength="30" data-bind="value: model.Patronymic" />
+        <p data-bind="validationMessage: model.Patronymic"></p>
     </div>
     <div class="form-group">
         <div style="position: relative">
             <label for="dob">DOB:</label>
-            <input id="dob" class="form-control" placeholder="DOB" aria-label="dob" required />
+            <input id="dob" class="form-control" placeholder="DOB" aria-label="dob" required data-bind="value: model.DOB" />
+            <p data-bind="validationMessage: model.DOB"></p>
         </div>
 
         <div style="position: relative">
             <label for="tob">TOB:</label>
-            <input id="tob" class="form-control" placeholder="TOB" aria-label="tob" required />
+            <input id="tob" class="form-control" placeholder="TOB" aria-label="tob" required data-bind="value: model.TOB" />
+            <p data-bind="validationMessage: model.TOB"></p>
         </div>
     </div>
 
     <div class="form-check">
-        <input class="form-check-input" type="radio" name="gender" id="genderMale" value="option1" checked>
+        <input class="form-check-input" type="radio" name="gender" id="genderMale" checked value="Male" data-bind="checked: model.Gender">
         <label class="form-check-label" for="exampleRadios1">
             Male
         </label>
     </div>
     <div class="form-check">
-        <input class="form-check-input" type="radio" name="gender" id="genderFemale" value="option2">
+        <input class="form-check-input" type="radio" name="gender" id="genderFemale" value="Female" data-bind="checked: model.Gender">
         <label class="form-check-label" for="exampleRadios2">
             Female
         </label>
@@ -43,27 +48,29 @@
 
     <div class="form-group">
         <label for="superpower">Superpower:</label>
-        <select class="form-control" id="superpower">
+        <select class="form-control" id="superpower" data-bind="options: model.Superpowers, optionsText:'Text', value: model.Superpower" required>
         </select>
 
         <label for="achievements">Achievements:</label>
-        <select class="form-control" id="achievements" multiple>
+        <select class="form-control" id="achievements" data-bind="options: model.AchievementsList, optionsText:'Text', selectedOptions: model.Achievements" multiple required> 
         </select>
     </div>
 
     <div class="form-group">
         <div style="position: relative">
-            <input id="add-info" type="checkbox" class="form-check-input" aria-label="add-info" required />
+            <input id="add-info" type="checkbox" class="form-check-input" aria-label="add-info" data-bind="checked: model.HasAdditionalInfo" />
             <label class="form-check-label" for="add-info">
                 Add additional info
             </label>
         </div>
 
-        <div style="position: relative">
+        <div style="position: relative" data-bind="visible: model.HasAdditionalInfo">
             <label for="add-text">Additional info:</label>
-            <textarea id="add-text"  class="form-control"></textarea>
+            <textarea id="add-text" class="form-control" data-bind="value: model.AdditionalInfo"></textarea>
         </div>
     </div>
+
+    <button class="btn btn-default" type="submit">Submit</button>
 </form>
 <script>
     var urls = {
@@ -73,49 +80,6 @@
             getAchievementsUrl: '@Url.Action("GetAchievements","Superhero")'
         };
 
-    var controller = new SuperheroGridController(new SuperheroFormBusiness(new SuperheroService(urls)));
-
-    $(document).ready(function(){
-        $("#dob").datetimepicker({
-            format: 'DD/MM/YYYY'
-        });
-
-         $("#tob").datetimepicker({
-             format: 'LT'
-         });
-
-        var data = [
-            {
-                id: 0,
-                text: 'enhancement'
-            },
-            {
-                id: 1,
-                text: 'bug'
-            },
-            {
-                id: 2,
-                text: 'duplicate'
-            },
-            {
-                id: 3,
-                text: 'invalid'
-            },
-            {
-                id: 4,
-                text: 'wontfix'
-            }
-        ];
-
-        $("#superpower").select2({
-            data: data
-        });
-
-        $("#achievements").select2({
-            data: data
-        });
-
-
-    });
+    var controller = new SuperheroFormController(new SuperheroFormBusiness(new SuperheroService(urls)));
            
 </script>

@@ -5,65 +5,61 @@
     <div class="modal-content" id="superhero-info-modal">
         <div class="modal-body">
             <h2>Superhero info</h2>
-        </div>
-        <div style="margin-left:10px">
-            <div class="row">
-                <div class="col-md-6">
-                    <p>
-                        Id:
-                    </p>
+            <div style="margin-left:10px">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>
+                            Id:
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p data-bind="text: model.Id">
+                        </p>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <p>
-                        Id
-                    </p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>
+                            Name:
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p data-bind="text: model.Name">
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <p>
-                        Name:
-                    </p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>
+                            Nickname:
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p data-bind="text: model.Nickname">
+                        </p>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <p>
-                        Name
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <p>
-                        Nickname:
-                    </p>
-                </div>
-                <div class="col-md-6">
-                    <p>
-                        Nickname
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <p>
-                        DOB:
-                    </p>
-                </div>
-                <div class="col-md-6">
-                    <p>
-                        DOB
-                    </p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>
+                            DOB:
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p data-bind="text: model.DOB">
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
+    </div>
        
 
 <script>
     var model = {
         Id: @Model.Id,
         Name: '@Model.Name',
-        Nickname: '@Model.NickName',
+        Nickname: '@Model.Nickname',
         DOB: '@Model.DOB'
     }
 

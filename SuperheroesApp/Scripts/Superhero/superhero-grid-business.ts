@@ -9,6 +9,9 @@
 
     constructor(service: SuperheroService) {
         this.service = service;
+    }
+
+    public Initialize() {
         this.GetGridData();
     }
 
@@ -25,8 +28,8 @@
         }
     }
 
-    public GetSuperheroModal(): void {
-        this.service.GetSuperheroModal().done((data: any) => {
+    public GetSuperheroModal(id: number): void {
+        this.service.GetSuperheroModal(id).done((data: any) => {
             this.triggerOnModalLayoutGet(data);
         });
     }

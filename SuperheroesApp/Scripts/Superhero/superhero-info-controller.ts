@@ -8,6 +8,8 @@
 
     public Initialize(model: SuperheroGridModel) {
         this.business.model = model;
+
+        ko.applyBindings(this.business.model, $('#superhero-info-modal')[0]);
     }
 }
 

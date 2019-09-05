@@ -4,8 +4,6 @@
 
     public model: SuperheroFormModel;
 
-    public superpowers: Array<SuperheroListModel>;
-    public achievements: Array<SuperheroListModel>;
 
 
     public OnSuperpowersGet: (superpowers: Array<SuperheroListModel>) => void;
@@ -13,13 +11,18 @@
 
     constructor(service: SuperheroService) {
         this.service = service;
+
+        this.model = new SuperheroFormModel();
+    }
+
+    public Initialize() {
         this.GetSuperpowers();
         this.GetAchievements();
     }
 
     private GetSuperpowers(): void {
         this.service.GetSuperpowers().done((data: Array<SuperheroListModel>) => {
-            this.superpowers = data;
+            this.model.Superpowers(data);
             this.triggerOnSuperpowersGet(data);
         });
     }
@@ -32,7 +35,7 @@
 
     private GetAchievements(): void {
         this.service.GetAchievements().done((data: Array<SuperheroListModel>) => {
-            this.achievements = data;
+            this.model.AchievementsList(data);
             this.triggerOnAchievementsLoad(data);
         });
     } 
@@ -45,6 +48,12 @@
 
     public Save(model: SuperheroFormModel): void {
         this.model = model;
+    }
+
+
+
+    public Submit() {
+
     }
 }
 

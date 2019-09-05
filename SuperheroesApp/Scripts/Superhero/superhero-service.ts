@@ -23,9 +23,9 @@
         });
     }
 
-    public GetSuperheroModal(): JQueryXHR {
+    public GetSuperheroModal(id: number): JQueryXHR {
         return $.get({
-            url: this.urls.getSuperheroModalUrl
+            url: this.urls.getSuperheroModalUrl+'?id='+id
         });
     }
 }
