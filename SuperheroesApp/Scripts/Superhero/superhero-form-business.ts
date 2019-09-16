@@ -13,6 +13,12 @@
 
     constructor(service: SuperheroService) {
         this.service = service;
+        this.model = new SuperheroFormModel();
+        this.superpowers = [];
+        this.achievements = [];
+    }
+
+    public Initialize() {
         this.GetSuperpowers();
         this.GetAchievements();
     }

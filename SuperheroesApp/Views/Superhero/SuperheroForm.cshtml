@@ -5,26 +5,29 @@
 
 <h2>SuperheroForm</h2>
 
-<form>
+<form id="main-form">
     <div class="form-group">
-        <label for="last-name">Last name:</label>
-        <input type="text" id="last-name" class="form-control" placeholder="Last Name" aria-label="last-name" maxlength="30" required />
+        <label for="name">Name:</label>
+        <input v-model="model.Name" type="text" id="name" class="form-control" placeholder="Name" aria-label="name" maxlength="30" required />
 
-        <label for="first-name">First name:</label>
-        <input type="text" id="first-name" class="form-control" placeholder="First Name" aria-label="first-name" maxlength="30" required />
+        <label for="sername">Sername:</label>
+        <input v-model="model.Sername" type="text" id="sername" class="form-control" placeholder="Sername" aria-label="sername" maxlength="30" required />
+
+        <label for="nickname">Nickname:</label>
+        <input v-model="model.Nickname" type="text" id="nickname" class="form-control" placeholder="Nickname" aria-label="nickname" maxlength="30" />
 
         <label for="patronymic">Patronymic:</label>
-        <input type="text" id="patronymic" class="form-control" placeholder="Patronymic" aria-label="patronymic" maxlength="30" />
+        <input v-model="model.Patronymic" type="text" id="patronymic" class="form-control" placeholder="Patronymic" aria-label="patronymic" maxlength="30" />
     </div>
     <div class="form-group">
         <div style="position: relative">
             <label for="dob">DOB:</label>
-            <input id="dob" class="form-control" placeholder="DOB" aria-label="dob" required />
+            <input v-model="model.DOB" id="dob" class="form-control" placeholder="DOB" aria-label="dob" required />
         </div>
 
         <div style="position: relative">
             <label for="tob">TOB:</label>
-            <input id="tob" class="form-control" placeholder="TOB" aria-label="tob" required />
+            <input v-model="model.TOB" id="tob" class="form-control" placeholder="TOB" aria-label="tob" required />
         </div>
     </div>
 
@@ -43,29 +46,33 @@
 
     <div class="form-group">
         <label for="superpower">Superpower:</label>
-        <select class="form-control" id="superpower">
+        <select class="form-control" v-model="model.Superpower" id="superpower">
+            <option v-for="power in superpowers" v-bind:value="power.Id">{{power.Text}}</option>
         </select>
 
         <label for="achievements">Achievements:</label>
-        <select class="form-control" id="achievements" multiple>
+        <select class="form-control" v-model="model.Achievements" id="achievements" multiple>
+            <option v-for="achievemen in achievements" v-bind:value="achievemen.Id">{{achievemen.Text}}</option>
         </select>
     </div>
 
     <div class="form-group">
         <div style="position: relative">
-            <input id="add-info" type="checkbox" class="form-check-input" aria-label="add-info" required />
+            <input id="add-info" v-model="model.IsAdditionalInfo" type="checkbox" class="form-check-input" aria-label="add-info" required />
             <label class="form-check-label" for="add-info">
                 Add additional info
             </label>
         </div>
 
-        <div style="position: relative">
+        <div v-show="model.IsAdditionalInfo" style="position: relative">
             <label for="add-text">Additional info:</label>
-            <textarea id="add-text"  class="form-control"></textarea>
+            <textarea v-model="model.AdditionalInfo" id="add-text" class="form-control"></textarea>
         </div>
     </div>
+    <button type="submit" class="btn btn-danger">Submit</button>
 </form>
 <script>
+
     var urls = {
             getGridDataUrl: '@Url.Action("GetGridInfo","Superhero")',
             getSuperheroModalUrl: '@Url.Action("SuperheroInfoModal","Superhero")',
@@ -73,49 +80,8 @@
             getAchievementsUrl: '@Url.Action("GetAchievements","Superhero")'
         };
 
-    var controller = new SuperheroGridController(new SuperheroFormBusiness(new SuperheroService(urls)));
 
-    $(document).ready(function(){
-        $("#dob").datetimepicker({
-            format: 'DD/MM/YYYY'
-        });
-
-         $("#tob").datetimepicker({
-             format: 'LT'
-         });
-
-        var data = [
-            {
-                id: 0,
-                text: 'enhancement'
-            },
-            {
-                id: 1,
-                text: 'bug'
-            },
-            {
-                id: 2,
-                text: 'duplicate'
-            },
-            {
-                id: 3,
-                text: 'invalid'
-            },
-            {
-                id: 4,
-                text: 'wontfix'
-            }
-        ];
-
-        $("#superpower").select2({
-            data: data
-        });
-
-        $("#achievements").select2({
-            data: data
-        });
-
-
-    });
+    var controller = new SuperheroFormController(new SuperheroFormBusiness(new SuperheroService(urls)));
+    controller.Initialize();
            
 </script>

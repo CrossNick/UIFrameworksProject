@@ -9,6 +9,9 @@
 
     constructor(service: SuperheroService) {
         this.service = service;
+    }
+
+    public Initialize() {
         this.GetGridData();
     }
 

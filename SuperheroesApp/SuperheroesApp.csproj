@@ -367,6 +367,12 @@
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\select2.js" />
     <Content Include="Scripts\select2.min.js" />
+    <Content Include="Scripts\vue-resource.common.js" />
+    <Content Include="Scripts\vue-resource.es2015.js" />
+    <Content Include="Scripts\vue-resource.js" />
+    <Content Include="Scripts\vue-resource.min.js" />
+    <Content Include="Scripts\vue.js" />
+    <Content Include="Scripts\vue.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -418,11 +424,14 @@
     <TypeScriptCompile Include="Scripts\Superhero\superhero-form-controller.ts" />
     <TypeScriptCompile Include="Scripts\Superhero\superhero-grid-controller.ts" />
     <TypeScriptCompile Include="Scripts\Superhero\superhero-service.ts" />
+    <TypeScriptCompile Include="Scripts\Superhero\select2-component.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\moment-duration-format\moment-duration-format.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\moment-range\moment-range.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\moment-timezone\moment-timezone.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\moment\moment.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\vue-resource\vue-resource.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\vue\vue.d.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
